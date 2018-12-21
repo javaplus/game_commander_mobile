@@ -6,4 +6,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-item>
+    <ion-label>Time of Round in Whole Minutes:</ion-label>    
+    <ion-input [(ngModel)]='gameRequest.gameTime'required type="text" placeholder="Time In Minutes"></ion-input>
+  </ion-item>
+  <ion-button shape="round" color="primary" fill="outline" (click)='submitTime()'>Hello World</ion-button>
+</ion-content>

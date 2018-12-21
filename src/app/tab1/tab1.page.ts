@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  message : string = "Welcome to Game Commander!!!";
+  message : string = "Tab1 Game Commander!!!";
 }

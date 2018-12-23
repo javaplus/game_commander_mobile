@@ -13,6 +13,7 @@ export class Tab2Page {
 
   submitTime():void{
     console.log("gameTime=" + this.gameRequest.gameTime);
+    console.log("setupTime=" + this.gameRequest.setupTime);
     this.timerService.invokeTimer(this.gameRequest).subscribe();
   }
 }

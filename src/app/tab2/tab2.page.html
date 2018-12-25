@@ -9,11 +9,11 @@
 <ion-content>
     <ion-item>
         <ion-label>Setup Time Before Round Starts:</ion-label>    
-        <ion-input [(ngModel)]='gameRequest.setupTime'required type="text" placeholder="Setup Time In Minutes"></ion-input>
+        <ion-input [(ngModel)]='gameSetup.setupTime'required type="number" placeholder="Setup Time In Minutes"></ion-input>
       </ion-item>
   <ion-item>
     <ion-label>Time of Round in Whole Minutes:</ion-label>    
-    <ion-input [(ngModel)]='gameRequest.gameTime'required type="text" placeholder="Time In Minutes"></ion-input>
+    <ion-input [(ngModel)]='gameSetup.gameTime'required type="number" placeholder="Time In Minutes"></ion-input>
   </ion-item>
   <ion-button shape="round" color="primary" fill="outline" (click)='submitTime()'>Hello World</ion-button>
 </ion-content>

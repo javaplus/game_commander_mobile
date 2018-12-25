@@ -13,7 +13,7 @@ export class TimerService {
 
     constructor(private httpClient: HttpClient) { }
 
-    timerURL : string = "http://localhost:8080/timer"
+    timerURL : string = "http://192.168.1.120:5000/timer"
 
     invokeTimer(timerRequest : GameRequest):Observable<String>{
         console.log('about to invoke timer:' + timerRequest);

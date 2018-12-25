@@ -1,5 +1,8 @@
+import { SpeakTime } from "./speakTime";
+
 export class GameRequest {
-    gameTime: number;
-    setupTime: number;
+    minutes: number;
+    speaktime: SpeakTime;
+    speakinterval: string;
     
 }

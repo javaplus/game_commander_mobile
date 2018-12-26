@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Tab2Page } from './tab2.page';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('Tab2Page', () => {
   let component: Tab2Page;
@@ -9,6 +10,7 @@ describe('Tab2Page', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports:[HttpClientModule],
       declarations: [Tab2Page],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();

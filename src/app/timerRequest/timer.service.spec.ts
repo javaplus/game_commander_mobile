@@ -22,6 +22,9 @@ describe('TimerService', () => {
         gameSetup.gameTime = 25;
         gameSetup.intervalTime = 5;
         let gameRequest = service.setupGame(gameSetup);
+
+        expect(gameRequest.speaktime.speakItems.length).toBe(5);
+
     });
 
 });

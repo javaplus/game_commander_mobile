@@ -55,13 +55,14 @@ export class TimerService {
       buildIntervalSpeakTime(intervalTime: number, time : number):SpeakItem[]{
         let speakItems = [];
         // Add a speakItem for each interval
-        let counter = time;
-        while(counter > 0){
+        let minutesRemaining = time;
+        while(minutesRemaining > 0){
             let speakItem = new SpeakItem;
-            let message = counter + " minutes remaining. " + counter + " minutes."
+            let message = minutesRemaining + " minutes remaining. " + minutesRemaining + " minutes."
             speakItem.say = message;
+            speakItem.time = minutesRemaining;
             speakItems.push(speakItem);
-            counter= counter - intervalTime;
+            minutesRemaining= minutesRemaining - intervalTime;
         }   
         return speakItems; 
       }

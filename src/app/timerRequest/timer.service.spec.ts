@@ -27,4 +27,15 @@ describe('TimerService', () => {
 
     });
 
+    it('when setupGame called with gameTime of 5 and interval of 5, then one speakItems created with say "time remaining 5 minutes"', ()=>{
+        let gameSetup = new GameSetup();
+        gameSetup.setupTime = 5;
+        gameSetup.gameTime = 5;
+        gameSetup.intervalTime = 5;
+        let gameRequest = service.setupGame(gameSetup);
+
+        expect(gameRequest.speaktime.speakItems.length).toBe(1);
+        expect(gameRequest.speaktime.speakItems[0].say).toBe("5 minutes remaining, 5 minutes");
+
+    });
 });

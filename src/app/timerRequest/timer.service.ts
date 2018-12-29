@@ -43,16 +43,24 @@ export class TimerService {
         let gameRequest = new GameRequest();
         gameRequest.speaktime = new SpeakTime();
         if(gameSetup.intervalTime !=null){
-            gameRequest.speaktime.speakItems = [];
-            // Add a speakItem for each interval
-            let counter = gameSetup.gameTime;
-            while(counter > 0){
-                counter= counter - gameSetup.intervalTime;                
-                gameRequest.speaktime.speakItems.push(new SpeakItem);
-            }
+            
+            let speakItems = this.buildIntervalSpeakTime(gameSetup.intervalTime, gameSetup.gameTime);
+            gameRequest.speaktime.speakItems =speakItems;
             
         }
 
         return gameRequest;
       }
+
+      buildIntervalSpeakTime(intervalTime: number, time : number):SpeakItem[]{
+        let speakItems = [];
+        // Add a speakItem for each interval
+        let counter = time;
+        while(counter > 0){
+            counter= counter - intervalTime;                
+            speakItems.push(new SpeakItem);
+        }   
+        return speakItems; 
+      }
+
     }

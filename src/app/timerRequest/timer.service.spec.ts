@@ -35,7 +35,7 @@ describe('TimerService', () => {
         let gameRequest = service.setupGame(gameSetup);
 
         expect(gameRequest.speaktime.speakItems.length).toBe(1);
-        expect(gameRequest.speaktime.speakItems[0].say).toBe("5 minutes remaining, 5 minutes");
+        expect(gameRequest.speaktime.speakItems[0].say).toBe("5 minutes remaining. 5 minutes.");
 
     });
 });

@@ -57,8 +57,11 @@ export class TimerService {
         // Add a speakItem for each interval
         let counter = time;
         while(counter > 0){
-            counter= counter - intervalTime;                
-            speakItems.push(new SpeakItem);
+            let speakItem = new SpeakItem;
+            let message = counter + " minutes remaining. " + counter + " minutes."
+            speakItem.say = message;
+            speakItems.push(speakItem);
+            counter= counter - intervalTime;
         }   
         return speakItems; 
       }

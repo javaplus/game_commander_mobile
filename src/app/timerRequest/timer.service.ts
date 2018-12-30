@@ -48,6 +48,7 @@ export class TimerService {
             gameRequest.speaktime.speakItems =speakItems;
             
         }
+        gameRequest.minutes = gameSetup.gameTime + gameSetup.setupTime;
 
         return gameRequest;
       }

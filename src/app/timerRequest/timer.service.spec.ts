@@ -84,4 +84,14 @@ describe('TimerService', () => {
         expect(gameRequest.speaktime.speakItems[4].time).toBe(5)
 
     });
+
+    it('when setupGame called with gameTime of 25 and setupTime of 3, then GameRequest has 28 minutes', ()=>{
+        let gameSetup = new GameSetup();
+        gameSetup.setupTime = 3;
+        gameSetup.gameTime = 25;
+        let gameRequest = service.setupGame(gameSetup);
+
+        expect(gameRequest.minutes).toBe(28);
+        
+    });
 });

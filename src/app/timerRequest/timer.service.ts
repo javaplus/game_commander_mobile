@@ -19,7 +19,7 @@ export class TimerService {
     timerURL : string = "http://192.168.1.120:5000/timer"
 
     invokeTimer(timerRequest : GameRequest):Observable<String>{
-        console.log('about to invoke timer:' + timerRequest);
+        console.log('about to invoke timer:', timerRequest);
         return this.httpClient.post<String>(this.timerURL, timerRequest).pipe(
             catchError(this.handleError<String>('invokeTimer'))
           );

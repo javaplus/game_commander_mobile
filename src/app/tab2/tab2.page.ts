@@ -18,20 +18,12 @@ export class Tab2Page {
     console.log("gameTime=" + this.gameSetup.gameTime);
     console.log("setupTime=" + this.gameSetup.setupTime);
     let gameRequest = this.buildGameRequest();
+    
     this.timerService.invokeTimer(gameRequest).subscribe();
   }
 
   buildGameRequest():GameRequest{
-    let gameRequest = new GameRequest();
-    gameRequest.minutes = this.gameSetup.gameTime + this.gameSetup.setupTime;
-    gameRequest.speaktime = new SpeakTime();
-    gameRequest.speaktime.speakItems = [];
-    gameRequest.speakinterval = "NA";
-    let speakItem = new SpeakItem();
-    speakItem.time = 3;
-    speakItem.say = "3 minutes to go";
-    gameRequest.speaktime.speakItems.push(speakItem);
-  
+    let gameRequest = this.timerService.setupGame(this.gameSetup);
     return gameRequest;
   }
 

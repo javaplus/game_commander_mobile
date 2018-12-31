@@ -120,7 +120,7 @@ describe('TimerService', () => {
         
     });
 
-    it('when GameSetup has startCountDown at 10 and gameTime is 25, then a speakTime should be created that starts 10 seconds gameTime.', ()=>{
+    it('when GameSetup has startCountDown at 10 and gameTime is 25, then a speakTime should be created that starts 10 seconds before gameTime.', ()=>{
         let gameSetup = new GameSetup();
         gameSetup.setupTime = 3;
         gameSetup.gameTime = 25;
@@ -130,6 +130,18 @@ describe('TimerService', () => {
 
         expect(gameRequest.speaktime[0].time).toBe('25:10');
         expect(gameRequest.speaktime[0].say).toBe('10, 9, 8, 7, 6, 5, 4, 3, 2, 1.');
+        
+    });
+
+    it('when GameSetup has startCountDown, then a speakTime should have a parm of -s 110.', ()=>{
+        let gameSetup = new GameSetup();
+        gameSetup.setupTime = 3;
+        gameSetup.gameTime = 25;
+        gameSetup.startCountDown = 10;
+        
+        let gameRequest = service.setupGame(gameSetup);
+
+        expect(gameRequest.speaktime[0].parms).toBe('-s 110');
         
     });
 });

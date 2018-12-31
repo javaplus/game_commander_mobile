@@ -96,6 +96,7 @@ export class TimerService {
         countDownMessage = countDownMessage.concat(".");
 
         speakItem.say = countDownMessage;
+        speakItem.parms = '-s 110';
 
         return speakItem;
       }

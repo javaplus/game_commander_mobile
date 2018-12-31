@@ -1,8 +1,8 @@
 import { SpeakTime } from "./speakTime";
 
 export class GameRequest {
-    minutes: number;
-    speaktime: SpeakTime;
-    speakinterval: string;
+    minutes: string;
+    speaktime: SpeakTime[] =[];
+    speakinterval: string[] = [];
     
 }

@@ -23,7 +23,7 @@ describe('TimerService', () => {
         gameSetup.intervalTime = 5;
         let gameRequest = service.setupGame(gameSetup);
 
-        expect(gameRequest.speaktime.speakItems.length).toBe(5);
+        expect(gameRequest.speaktime.length).toBe(5);
 
     });
 
@@ -34,8 +34,8 @@ describe('TimerService', () => {
         gameSetup.intervalTime = 5;
         let gameRequest = service.setupGame(gameSetup);
 
-        expect(gameRequest.speaktime.speakItems.length).toBe(1);
-        expect(gameRequest.speaktime.speakItems[0].say).toBe("5 minutes remaining. 5 minutes.");
+        expect(gameRequest.speaktime.length).toBe(1);
+        expect(gameRequest.speaktime[0].say).toBe("5 minutes remaining. 5 minutes.");
 
     });
 
@@ -46,9 +46,9 @@ describe('TimerService', () => {
         gameSetup.intervalTime = 3;
         let gameRequest = service.setupGame(gameSetup);
 
-        expect(gameRequest.speaktime.speakItems.length).toBe(2);
-        expect(gameRequest.speaktime.speakItems[0].say).toBe("5 minutes remaining. 5 minutes.");
-        expect(gameRequest.speaktime.speakItems[1].say).toBe("2 minutes remaining. 2 minutes.");
+        expect(gameRequest.speaktime.length).toBe(2);
+        expect(gameRequest.speaktime[0].say).toBe("5 minutes remaining. 5 minutes.");
+        expect(gameRequest.speaktime[1].say).toBe("2 minutes remaining. 2 minutes.");
 
     });
 
@@ -60,12 +60,12 @@ describe('TimerService', () => {
         gameSetup.intervalTime = 5;
         let gameRequest = service.setupGame(gameSetup);
 
-        expect(gameRequest.speaktime.speakItems.length).toBe(5);
-        expect(gameRequest.speaktime.speakItems[0].say).toBe("25 minutes remaining. 25 minutes.");
-        expect(gameRequest.speaktime.speakItems[1].say).toBe("20 minutes remaining. 20 minutes.");
-        expect(gameRequest.speaktime.speakItems[2].say).toBe("15 minutes remaining. 15 minutes.");
-        expect(gameRequest.speaktime.speakItems[3].say).toBe("10 minutes remaining. 10 minutes.");
-        expect(gameRequest.speaktime.speakItems[4].say).toBe("5 minutes remaining. 5 minutes.");
+        expect(gameRequest.speaktime.length).toBe(5);
+        expect(gameRequest.speaktime[0].say).toBe("25 minutes remaining. 25 minutes.");
+        expect(gameRequest.speaktime[1].say).toBe("20 minutes remaining. 20 minutes.");
+        expect(gameRequest.speaktime[2].say).toBe("15 minutes remaining. 15 minutes.");
+        expect(gameRequest.speaktime[3].say).toBe("10 minutes remaining. 10 minutes.");
+        expect(gameRequest.speaktime[4].say).toBe("5 minutes remaining. 5 minutes.");
 
     });
 
@@ -76,12 +76,12 @@ describe('TimerService', () => {
         gameSetup.intervalTime = 5;
         let gameRequest = service.setupGame(gameSetup);
 
-        expect(gameRequest.speaktime.speakItems.length).toBe(5);
-        expect(gameRequest.speaktime.speakItems[0].time).toBe('25');
-        expect(gameRequest.speaktime.speakItems[1].time).toBe('20');
-        expect(gameRequest.speaktime.speakItems[2].time).toBe('15');
-        expect(gameRequest.speaktime.speakItems[3].time).toBe('10');
-        expect(gameRequest.speaktime.speakItems[4].time).toBe('5')
+        expect(gameRequest.speaktime.length).toBe(5);
+        expect(gameRequest.speaktime[0].time).toBe('25');
+        expect(gameRequest.speaktime[1].time).toBe('20');
+        expect(gameRequest.speaktime[2].time).toBe('15');
+        expect(gameRequest.speaktime[3].time).toBe('10');
+        expect(gameRequest.speaktime[4].time).toBe('5')
 
     });
 
@@ -91,7 +91,7 @@ describe('TimerService', () => {
         gameSetup.gameTime = 25;
         let gameRequest = service.setupGame(gameSetup);
 
-        expect(gameRequest.minutes).toBe(28);
+        expect(gameRequest.minutes).toBe('28');
         
     });
 
@@ -103,8 +103,8 @@ describe('TimerService', () => {
         
         let gameRequest = service.setupGame(gameSetup);
 
-        expect(gameRequest.speaktime.speakItems[0].time).toBe('0:00');
-        expect(gameRequest.speaktime.speakItems[0].say).toBe('This is the end, my only friend, the end.');
+        expect(gameRequest.speaktime[0].time).toBe('0:00');
+        expect(gameRequest.speaktime[0].say).toBe('This is the end, my only friend, the end.');
         
     });
 });

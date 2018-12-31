@@ -5,7 +5,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { GameRequest } from '../entities/gameRequest';
 import { GameSetup } from '../entities/gameSetup';
 import { SpeakTime } from '../entities/speakTime';
-import { SpeakItem } from '../entities/speakItem';
 
 
 
@@ -41,27 +40,26 @@ export class TimerService {
 
       setupGame(gameSetup : GameSetup):GameRequest{
         let gameRequest = new GameRequest();
-        gameRequest.speaktime = new SpeakTime();
         if(gameSetup.intervalTime !=null){
             
             let speakItems = this.buildIntervalSpeakTime(gameSetup.intervalTime, gameSetup.gameTime);
-            gameRequest.speaktime.speakItems =speakItems;  
+            gameRequest.speaktime=speakItems;  
         }
         if(gameSetup.endMessage!=null){
             let lastSpeakItem = this.setLastMessage(gameSetup.endMessage); 
-            gameRequest.speaktime.speakItems.push(lastSpeakItem);
+            gameRequest.speaktime.push(lastSpeakItem);
         }
-        gameRequest.minutes = gameSetup.gameTime + gameSetup.setupTime;
+        gameRequest.minutes = String(gameSetup.gameTime + gameSetup.setupTime);
 
         return gameRequest;
       }
 
-      buildIntervalSpeakTime(intervalTime: number, time : number):SpeakItem[]{
+      buildIntervalSpeakTime(intervalTime: number, time : number):SpeakTime[]{
         let speakItems = [];
         // Add a speakItem for each interval
         let minutesRemaining = time;
         while(minutesRemaining > 0){
-            let speakItem = new SpeakItem;
+            let speakItem = new SpeakTime;
             let message = minutesRemaining + " minutes remaining. " + minutesRemaining + " minutes."
             speakItem.say = message;
             speakItem.time = String(minutesRemaining);
@@ -71,8 +69,8 @@ export class TimerService {
         return speakItems; 
       }
 
-      setLastMessage(endMessage : string): SpeakItem{
-        let speakItem = new SpeakItem();
+      setLastMessage(endMessage : string): SpeakTime{
+        let speakItem = new SpeakTime();
 
         speakItem.time = '0:00';
         speakItem.say = endMessage;

@@ -1,5 +1,5 @@
 export class SpeakItem {
-    time: number;
+    time: string;
     say: string;
     parms: string;
     file: string;

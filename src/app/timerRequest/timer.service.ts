@@ -45,8 +45,11 @@ export class TimerService {
         if(gameSetup.intervalTime !=null){
             
             let speakItems = this.buildIntervalSpeakTime(gameSetup.intervalTime, gameSetup.gameTime);
-            gameRequest.speaktime.speakItems =speakItems;
-            
+            gameRequest.speaktime.speakItems =speakItems;  
+        }
+        if(gameSetup.endMessage!=null){
+            let lastSpeakItem = this.setLastMessage(gameSetup.endMessage); 
+            gameRequest.speaktime.speakItems.push(lastSpeakItem);
         }
         gameRequest.minutes = gameSetup.gameTime + gameSetup.setupTime;
 
@@ -61,11 +64,20 @@ export class TimerService {
             let speakItem = new SpeakItem;
             let message = minutesRemaining + " minutes remaining. " + minutesRemaining + " minutes."
             speakItem.say = message;
-            speakItem.time = minutesRemaining;
+            speakItem.time = String(minutesRemaining);
             speakItems.push(speakItem);
             minutesRemaining= minutesRemaining - intervalTime;
         }   
         return speakItems; 
+      }
+
+      setLastMessage(endMessage : string): SpeakItem{
+        let speakItem = new SpeakItem();
+
+        speakItem.time = '0:00';
+        speakItem.say = endMessage;
+
+        return speakItem;
       }
 
     }

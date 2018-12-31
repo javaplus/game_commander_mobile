@@ -19,5 +19,10 @@
     <ion-label class='fixedLabel'>Interval in Minutes:</ion-label>    
     <ion-input [(ngModel)]='gameSetup.intervalTime'required type="number" placeholder="Interval time In Minutes"></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-label class='fixedLabel'>End Time Message:</ion-label>    
+    <ion-input [(ngModel)]='gameSetup.endMessage'required type="string" placeholder="End Time Message to Say"></ion-input>
+  </ion-item>
+
   <ion-button shape="round" color="primary" fill="outline" (click)='submitTime()'>Submit Time</ion-button>
 </ion-content>

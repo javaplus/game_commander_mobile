@@ -77,11 +77,11 @@ describe('TimerService', () => {
         let gameRequest = service.setupGame(gameSetup);
 
         expect(gameRequest.speaktime.speakItems.length).toBe(5);
-        expect(gameRequest.speaktime.speakItems[0].time).toBe(25);
-        expect(gameRequest.speaktime.speakItems[1].time).toBe(20);
-        expect(gameRequest.speaktime.speakItems[2].time).toBe(15);
-        expect(gameRequest.speaktime.speakItems[3].time).toBe(10);
-        expect(gameRequest.speaktime.speakItems[4].time).toBe(5)
+        expect(gameRequest.speaktime.speakItems[0].time).toBe('25');
+        expect(gameRequest.speaktime.speakItems[1].time).toBe('20');
+        expect(gameRequest.speaktime.speakItems[2].time).toBe('15');
+        expect(gameRequest.speaktime.speakItems[3].time).toBe('10');
+        expect(gameRequest.speaktime.speakItems[4].time).toBe('5')
 
     });
 
@@ -92,6 +92,19 @@ describe('TimerService', () => {
         let gameRequest = service.setupGame(gameSetup);
 
         expect(gameRequest.minutes).toBe(28);
+        
+    });
+
+    it('when GameSetup has end time message, then a speakItem should be created with time of 0', ()=>{
+        let gameSetup = new GameSetup();
+        gameSetup.setupTime = 3;
+        gameSetup.gameTime = 25;
+        gameSetup.endMessage = 'This is the end, my only friend, the end.';
+        
+        let gameRequest = service.setupGame(gameSetup);
+
+        expect(gameRequest.speaktime.speakItems[0].time).toBe('0:00');
+        expect(gameRequest.speaktime.speakItems[0].say).toBe('This is the end, my only friend, the end.');
         
     });
 });

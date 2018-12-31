@@ -4,5 +4,6 @@ export class GameSetup {
     gameTime: number;
     setupTime: number;
     intervalTime: number;
+    endMessage: string;
     speakItemsList: SpeakItem[];
 }

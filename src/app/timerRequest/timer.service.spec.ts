@@ -85,6 +85,18 @@ describe('TimerService', () => {
 
     });
 
+    it('when setupGame called with interval, then speakItems time created use params of -s 140', ()=>{
+        let gameSetup = new GameSetup();
+        gameSetup.setupTime = 3;
+        gameSetup.gameTime = 25;
+        gameSetup.intervalTime = 5;
+        let gameRequest = service.setupGame(gameSetup);
+
+        expect(gameRequest.speaktime.length).toBe(5);
+        expect(gameRequest.speaktime[0].parms).toBe('-s 120');
+       
+    });
+
     it('when setupGame called with gameTime of 25 and setupTime of 3, then GameRequest has 28 minutes', ()=>{
         let gameSetup = new GameSetup();
         gameSetup.setupTime = 3;

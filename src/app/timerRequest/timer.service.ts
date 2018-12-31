@@ -63,6 +63,7 @@ export class TimerService {
             let message = minutesRemaining + " minutes remaining. " + minutesRemaining + " minutes."
             speakItem.say = message;
             speakItem.time = String(minutesRemaining);
+            speakItem.parms = '-s 120'
             speakItems.push(speakItem);
             minutesRemaining= minutesRemaining - intervalTime;
         }   

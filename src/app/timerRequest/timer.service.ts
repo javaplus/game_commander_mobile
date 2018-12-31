@@ -49,6 +49,10 @@ export class TimerService {
             let lastSpeakItem = this.setLastMessage(gameSetup.endMessage); 
             gameRequest.speaktime.push(lastSpeakItem);
         }
+        if(gameSetup.startCountDown!=null){
+            let countDownSpeakTime= this.setStartCountDownTimer(gameSetup.gameTime, gameSetup.startCountDown);
+            gameRequest.speaktime.push(countDownSpeakTime);
+        }
         gameRequest.minutes = String(gameSetup.gameTime + gameSetup.setupTime);
 
         return gameRequest;
@@ -78,5 +82,23 @@ export class TimerService {
 
         return speakItem;
       }
+
+      setStartCountDownTimer(startTime: number, countDown:number): SpeakTime{
+        let speakItem = new SpeakTime();
+
+        speakItem.time = startTime + ':' + countDown;
+        let countDownMessage = String(countDown); 
+        for (let i = (countDown-1); i > 0; i--) {
+            console.log("i = " + String(i));
+            countDownMessage = countDownMessage.concat(", ")
+            countDownMessage = countDownMessage.concat(String(i));
+        }
+        countDownMessage = countDownMessage.concat(".");
+
+        speakItem.say = countDownMessage;
+
+        return speakItem;
+      }
+
 
     }

@@ -1,9 +1,10 @@
-import { SpeakItem } from "./speakItem";
+import { SpeakTime } from "./speakTime";
 
 export class GameSetup {
     gameTime: number;
     setupTime: number;
     intervalTime: number;
     endMessage: string;
-    speakItemsList: SpeakItem[];
+    startCountDown: number;
+    speakTimeList: SpeakTime[];
 }

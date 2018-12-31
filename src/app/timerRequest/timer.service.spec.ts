@@ -16,7 +16,7 @@ describe('TimerService', () => {
         expect(service).toBeTruthy();
     });
 
-    it('when setupGame called with gameTime of 25 and interval of 5, then 5 speakItems are created', ()=>{
+    it('when setupGame called with gameTime of 25 and interval of 5, then 5 speakTimes are created', ()=>{
         let gameSetup = new GameSetup();
         gameSetup.setupTime = 5;
         gameSetup.gameTime = 25;
@@ -27,7 +27,7 @@ describe('TimerService', () => {
 
     });
 
-    it('when setupGame called with gameTime of 5 and interval of 5, then one speakItems created with say "time remaining 5 minutes"', ()=>{
+    it('when setupGame called with gameTime of 5 and interval of 5, then one speakTimes created with say "time remaining 5 minutes"', ()=>{
         let gameSetup = new GameSetup();
         gameSetup.setupTime = 5;
         gameSetup.gameTime = 5;
@@ -39,7 +39,7 @@ describe('TimerService', () => {
 
     });
 
-    it('when setupGame called with gameTime of 5 and interval of 3, then speakItems created for 5 minutes and 3 minutes', ()=>{
+    it('when setupGame called with gameTime of 5 and interval of 3, then speakTimes created for 5 minutes and 3 minutes', ()=>{
         let gameSetup = new GameSetup();
         gameSetup.setupTime = 5;
         gameSetup.gameTime = 5;
@@ -53,7 +53,7 @@ describe('TimerService', () => {
     });
 
     
-    it('when setupGame called with gameTime of 25 and interval of 5, then speakItems created for 25, 20, 15,10, and 5 minutes', ()=>{
+    it('when setupGame called with gameTime of 25 and interval of 5, then speakTimes created for 25, 20, 15,10, and 5 minutes', ()=>{
         let gameSetup = new GameSetup();
         gameSetup.setupTime = 3;
         gameSetup.gameTime = 25;
@@ -69,7 +69,7 @@ describe('TimerService', () => {
 
     });
 
-    it('when setupGame called with gameTime of 25 and interval of 5, then speakItems time created for 25, 20, 15,10, and 5 minutes', ()=>{
+    it('when setupGame called with gameTime of 25 and interval of 5, then speakTimes time created for 25, 20, 15,10, and 5 minutes', ()=>{
         let gameSetup = new GameSetup();
         gameSetup.setupTime = 3;
         gameSetup.gameTime = 25;
@@ -85,7 +85,7 @@ describe('TimerService', () => {
 
     });
 
-    it('when setupGame called with interval, then speakItems time created use params of -s 140', ()=>{
+    it('when setupGame called with interval, then speakTimes time created use params of -s 140', ()=>{
         let gameSetup = new GameSetup();
         gameSetup.setupTime = 3;
         gameSetup.gameTime = 25;
@@ -107,7 +107,7 @@ describe('TimerService', () => {
         
     });
 
-    it('when GameSetup has end time message, then a speakItem should be created with time of 0', ()=>{
+    it('when GameSetup has end time message, then a speakTime should be created with time of 0', ()=>{
         let gameSetup = new GameSetup();
         gameSetup.setupTime = 3;
         gameSetup.gameTime = 25;
@@ -117,6 +117,19 @@ describe('TimerService', () => {
 
         expect(gameRequest.speaktime[0].time).toBe('0:00');
         expect(gameRequest.speaktime[0].say).toBe('This is the end, my only friend, the end.');
+        
+    });
+
+    it('when GameSetup has startCountDown at 10 and gameTime is 25, then a speakTime should be created that starts 10 seconds gameTime.', ()=>{
+        let gameSetup = new GameSetup();
+        gameSetup.setupTime = 3;
+        gameSetup.gameTime = 25;
+        gameSetup.startCountDown = 10;
+        
+        let gameRequest = service.setupGame(gameSetup);
+
+        expect(gameRequest.speaktime[0].time).toBe('25:10');
+        expect(gameRequest.speaktime[0].say).toBe('10, 9, 8, 7, 6, 5, 4, 3, 2, 1.');
         
     });
 });

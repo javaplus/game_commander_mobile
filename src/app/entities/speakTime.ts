@@ -1,4 +1,3 @@
-import { SpeakItem } from "./speakItem";
 
 export class SpeakTime {
     time: string;

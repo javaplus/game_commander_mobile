@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { GameRequest } from '../entities/gameRequest';
 import { TimerService } from '../timerRequest/timer.service';
 import { GameSetup } from '../entities/gameSetup';
-import { SpeakTime } from '../entities/speakTime';
-import { SpeakItem } from '../entities/speakItem';
 
 @Component({
   selector: 'app-tab2',

@@ -7,25 +7,26 @@
 </ion-header>
 
 <ion-content>
-    <ion-item>
-        <ion-label class='fixedLabel'>Setup Time Before Round Starts:</ion-label>    
-        <ion-input [(ngModel)]='gameSetup.setupTime'required type="number" placeholder="Setup Time In Minutes"></ion-input>
-      </ion-item>
   <ion-item>
-    <ion-label class='fixedLabel'>Time of Round in Whole Minutes:</ion-label>    
-    <ion-input [(ngModel)]='gameSetup.gameTime'required type="number" placeholder="Time In Minutes"></ion-input>
+    <ion-label class='fixedLabel'>Setup Time Before Round Starts:</ion-label>
+    <ion-input [(ngModel)]='gameSetup.setupTime' required type="number" placeholder="Setup Time In Minutes"></ion-input>
+  </ion-item>
+  <app-speakentry></app-speakentry>
+  <ion-item>
+    <ion-label class='fixedLabel'>Time of Round in Whole Minutes:</ion-label>
+    <ion-input [(ngModel)]='gameSetup.gameTime' required type="number" placeholder="Time In Minutes"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label class='fixedLabel'>Interval in Minutes:</ion-label>    
-    <ion-input [(ngModel)]='gameSetup.intervalTime'required type="number" placeholder="Interval time In Minutes"></ion-input>
+    <ion-label class='fixedLabel'>Interval in Minutes:</ion-label>
+    <ion-input [(ngModel)]='gameSetup.intervalTime' required type="number" placeholder="Interval time In Minutes"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label class='fixedLabel'>End Time Message:</ion-label>    
-    <ion-input [(ngModel)]='gameSetup.endMessage'required type="string" placeholder="End Time Message to Say"></ion-input>
+    <ion-label class='fixedLabel'>End Time Message:</ion-label>
+    <ion-input [(ngModel)]='gameSetup.endMessage' required type="string" placeholder="End Time Message to Say"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label class='fixedLabel'>Count Down Before Game (10 to 5 seconds):</ion-label>    
-    <ion-input [(ngModel)]='gameSetup.startCountDown'required type="number" placeholder="Seconds before game time"></ion-input>
+    <ion-label class='fixedLabel'>Count Down Before Game (10 to 5 seconds):</ion-label>
+    <ion-input [(ngModel)]='gameSetup.startCountDown' required type="number" placeholder="Seconds before game time"></ion-input>
   </ion-item>
 
   <ion-button shape="round" color="primary" fill="outline" (click)='submitTime()'>Submit Time</ion-button>

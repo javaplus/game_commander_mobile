@@ -17,5 +17,6 @@ export class SpeakentryComponent implements OnInit {
 
   createSpeakEntry(){
     this.speakEntryEvent.emit(this.speakTime);
+    this.speakTime = new SpeakTime();
   }
 }

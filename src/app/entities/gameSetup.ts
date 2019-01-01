@@ -6,5 +6,5 @@ export class GameSetup {
     intervalTime: number;
     endMessage: string;
     startCountDown: number;
-    speakTimeList: SpeakTime[];
+    speakTimeList: SpeakTime[] = [];
 }

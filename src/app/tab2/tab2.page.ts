@@ -11,6 +11,7 @@ import { GameSetup } from '../entities/gameSetup';
 export class Tab2Page {
   constructor(private timerService: TimerService){}
   gameSetup : GameSetup = new GameSetup(); 
+  
 
   submitTime():void{
     console.log("gameTime=" + this.gameSetup.gameTime);
@@ -27,6 +28,7 @@ export class Tab2Page {
 
   receiveSpeakEntry($event){
     console.log("got message", $event);
+    this.gameSetup.speakTimeList.push($event);
   }
 
 }

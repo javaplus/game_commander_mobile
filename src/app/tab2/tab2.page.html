@@ -28,6 +28,9 @@
     <ion-label class='fixedLabel'>Count Down Before Game (10 to 5 seconds):</ion-label>
     <ion-input [(ngModel)]='gameSetup.startCountDown' required type="number" placeholder="Seconds before game time"></ion-input>
   </ion-item>
+  <ion-item *ngFor="let speakItem of gameSetup.speakTimeList">
+    Item {{speakItem.say}}
+  </ion-item>
 
   <ion-button shape="round" color="primary" fill="outline" (click)='submitTime()'>Submit Time</ion-button>
 </ion-content>

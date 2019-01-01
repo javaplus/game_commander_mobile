@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { SpeakTime } from '../entities/speakTime';
 
 @Component({
   selector: 'app-speakentry',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpeakentryComponent implements OnInit {
 
+  speakTime : SpeakTime = new SpeakTime();
+  @Output() speakEntryEvent = new EventEmitter<SpeakTime>();
   constructor() { }
 
   ngOnInit() {
   }
 
+  createSpeakEntry(){
+    this.speakEntryEvent.emit(this.speakTime);
+  }
 }

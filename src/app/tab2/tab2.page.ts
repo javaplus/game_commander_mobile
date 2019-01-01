@@ -25,4 +25,8 @@ export class Tab2Page {
     return gameRequest;
   }
 
+  receiveSpeakEntry($event){
+    console.log("got message", $event);
+  }
+
 }

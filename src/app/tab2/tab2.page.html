@@ -11,7 +11,7 @@
     <ion-label class='fixedLabel'>Setup Time Before Round Starts:</ion-label>
     <ion-input [(ngModel)]='gameSetup.setupTime' required type="number" placeholder="Setup Time In Minutes"></ion-input>
   </ion-item>
-  <app-speakentry></app-speakentry>
+  <app-speakentry (speakEntryEvent)="receiveSpeakEntry($event)"></app-speakentry>
   <ion-item>
     <ion-label class='fixedLabel'>Time of Round in Whole Minutes:</ion-label>
     <ion-input [(ngModel)]='gameSetup.gameTime' required type="number" placeholder="Time In Minutes"></ion-input>

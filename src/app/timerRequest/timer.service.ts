@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { GameRequest } from '../entities/gameRequest';
 import { GameSetup } from '../entities/gameSetup';
 import { SpeakTime } from '../entities/speakTime';
+import { AdminGlobals } from '../admin/admin-globals';
 
 
 
@@ -13,13 +14,12 @@ import { SpeakTime } from '../entities/speakTime';
 })
 export class TimerService {
 
-    constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient, private global_admin: AdminGlobals) { }
 
-    timerURL : string = "http://192.168.1.120:5000/timer"
-
+    
     invokeTimer(timerRequest : GameRequest):Observable<String>{
         console.log('about to invoke timer:', timerRequest);
-        return this.httpClient.post<String>(this.timerURL, timerRequest).pipe(
+        return this.httpClient.post<String>(this.global_admin.server_address, timerRequest).pipe(
             catchError(this.handleError<String>('invokeTimer'))
           );
     }

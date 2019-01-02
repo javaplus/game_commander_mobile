@@ -2,7 +2,7 @@
 export class SpeakTime {
     time: string;
     say: string;
-    parms: string;
+    parms: string = "-s 140";
     file: string;
     
 }

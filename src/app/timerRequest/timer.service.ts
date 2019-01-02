@@ -54,6 +54,7 @@ export class TimerService {
             gameRequest.speaktime.push(countDownSpeakTime);
         }
         gameRequest.minutes = String(gameSetup.gameTime + gameSetup.setupTime);
+        gameRequest.speaktime = gameRequest.speaktime.concat(gameSetup.speakTimeList);
 
         return gameRequest;
       }

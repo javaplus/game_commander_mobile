@@ -7,5 +7,9 @@
 </ion-header>
 
 <ion-content>
-  Input field: <input type="text" id="in1"/>
+  <ion-item>
+    <ion-label>Server IP:</ion-label>
+  <ion-input [(ngModel)]='global_admin.server_address' required type="string" placeholder="http://10.0.0.1:5000/timer"></ion-input>
+  </ion-item>
+  <ion-button shape="round" color="primary" fill="outline" (click)='updateAdmin()'>Update</ion-button>
 </ion-content>

@@ -9,28 +9,32 @@
 <ion-content>
   <ion-item>
     <ion-label class='fixedLabel'>Setup Time Before Round Starts:</ion-label>
-    <ion-input [(ngModel)]='gameSetup.setupTime' required type="number" placeholder="Setup Time In Minutes"></ion-input>
+    <ion-input [(ngModel)]='gameSetup.setupTime' (focusout)="updateGameRequest()" required type="number" placeholder="Setup Time In Minutes"></ion-input>
   </ion-item>
-  <app-speakentry (speakEntryEvent)="receiveSpeakEntry($event)"></app-speakentry>
   <ion-item>
     <ion-label class='fixedLabel'>Time of Round in Whole Minutes:</ion-label>
-    <ion-input [(ngModel)]='gameSetup.gameTime' required type="number" placeholder="Time In Minutes"></ion-input>
+    <ion-input [(ngModel)]='gameSetup.gameTime' (focusout)="updateGameRequest()" required type="number" placeholder="Time In Minutes"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class='fixedLabel'>Interval in Minutes:</ion-label>
-    <ion-input [(ngModel)]='gameSetup.intervalTime' required type="number" placeholder="Interval time In Minutes"></ion-input>
+    <ion-input [(ngModel)]='gameSetup.intervalTime' (focusout)="updateGameRequest()" required type="number" placeholder="Interval time In Minutes"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class='fixedLabel'>End Time Message:</ion-label>
-    <ion-input [(ngModel)]='gameSetup.endMessage' required type="string" placeholder="End Time Message to Say"></ion-input>
+    <ion-input [(ngModel)]='gameSetup.endMessage' (focusout)="updateGameRequest()" required type="string" placeholder="End Time Message to Say"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class='fixedLabel'>Count Down Before Game (10 to 5 seconds):</ion-label>
-    <ion-input [(ngModel)]='gameSetup.startCountDown' required type="number" placeholder="Seconds before game time"></ion-input>
+    <ion-input [(ngModel)]='gameSetup.startCountDown'  (focusout)="updateGameRequest()" required type="number" placeholder="Seconds before game time"></ion-input>
   </ion-item>
   <ion-button shape="round" color="primary" fill="outline" (click)='submitTime()'>Submit Time</ion-button>
   <ion-item-divider></ion-item-divider>
-  <ion-item *ngFor="let speakItem of gameSetup.speakTimeList">
+  <app-speakentry (speakEntryEvent)="receiveSpeakEntry($event)"></app-speakentry>
+  <ion-item-divider></ion-item-divider>
+  <ion-item>
+    Total Game time:{{gameRequest.minutes}}
+  </ion-item>
+  <ion-item *ngFor="let speakItem of gameRequest.speaktime">
       <div item-content>  
       ({{speakItem.time}}):{{speakItem.say}}
     </div>

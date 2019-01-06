@@ -86,8 +86,10 @@ export class TimerService {
 
       setStartCountDownTimer(startTime: number, countDown:number): SpeakTime{
         let speakItem = new SpeakTime();
+        let seconds = countDown >= 10 ? String(countDown) : '0' + countDown;
 
-        speakItem.time = startTime + ':' + countDown;
+        
+        speakItem.time = startTime + ':' + seconds;
         let countDownMessage = String(countDown); 
         for (let i = (countDown-1); i > 0; i--) {
             console.log("i = " + String(i));

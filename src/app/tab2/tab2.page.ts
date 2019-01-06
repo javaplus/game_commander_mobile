@@ -39,14 +39,18 @@ export class Tab2Page {
     if(this.gameRequest.speaktime!=null){
       this.gameRequest.speaktime = this.gameRequest.speaktime.sort((one, two):number=>{
           let firstMin = +(one.time.split(':')[0]);
+          firstMin = firstMin ? firstMin : 0;
           let firstSec = +(one.time.split(':')[1]);
+          firstSec = firstSec ? firstSec : 0;
           let secMin = +(two.time.split(':')[0]);
+          secMin = secMin ? secMin : 0;
           let secSec = +(two.time.split(':')[1]);
-          /*console.log("firstMin=" + String(firstMin));
+          secSec = secSec ? secSec : 0;
+          console.log("firstMin=" + String(firstMin));
           console.log("firstSec=" + String(firstSec));
           console.log("secMin=" + String(secMin));
           console.log("secSec=" + String(secSec));
-          */
+          
           
           if(firstMin == secMin){
             // if minutes are same just compare seconds
@@ -62,5 +66,10 @@ export class Tab2Page {
           return 0;
       });
     }
+  }
+
+  clearTimerSetup(){
+    this.gameRequest = new GameRequest();
+    this.gameSetup = new GameSetup();
   }
 }

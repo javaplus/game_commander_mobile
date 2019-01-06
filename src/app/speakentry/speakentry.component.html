@@ -1,9 +1,9 @@
 <ion-item>
-  <ion-label class='fixedLabel'>Time to Speak:</ion-label>
-  <ion-input [(ngModel)]='speakTime.time' required type="string" placeholder="Time to Speak"></ion-input>
+  <ion-label class='fixedLabel'>Time to Speak(Min:Sec):</ion-label>
+  <ion-input [(ngModel)]='speakTime.time' required type="string" placeholder="Minutes:Seconds"></ion-input>
 </ion-item>
 <ion-item>
   <ion-label class='fixedLabel'>Say:</ion-label>
   <ion-input [(ngModel)]='speakTime.say' required type="string" placeholder="What to say"></ion-input>
 </ion-item>
-<ion-button shape="round" color="primary" fill="outline" (click)='createSpeakEntry()'>Add Speak Item</ion-button>
+<ion-button shape="round" color="primary" fill="outline" (click)='createSpeakEntry()'>Add Speech Item</ion-button>

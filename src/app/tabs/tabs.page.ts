@@ -17,6 +17,7 @@ export class TabsPage {
 
   tabChanged(tabs){
     console.log("Tab changed", tabs);
+    console.log("tab:", tabs.tabBar.selectedTab);
     
   }
   

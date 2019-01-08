@@ -9,7 +9,7 @@
 <ion-content>
     <ion-item>
         <ion-label class='fixedLabel'>Game Name:</ion-label>
-        <ion-input [(ngModel)]='gameSetup.gameName' (focusout)="updateGameRequest()" required type="number" placeholder="Setup Time In Minutes"></ion-input>
+        <ion-input [(ngModel)]='gameSetup.gameName' (focusout)="updateGameRequest()" required type="string" placeholder="Unique Game Name"></ion-input>
       </ion-item>
   <ion-item>
     <ion-label class='fixedLabel'>Setup Time Before Round Starts:</ion-label>

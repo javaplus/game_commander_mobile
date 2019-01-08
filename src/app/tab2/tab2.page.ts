@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { GameRequest } from '../entities/gameRequest';
 import { TimerService } from '../timerRequest/timer.service';
 import { GameSetup } from '../entities/gameSetup';
+import { Storage } from '@ionic/storage'
+import { AdminGlobals } from '../admin/admin-globals';
 
 @Component({
   selector: 'app-tab2',
@@ -9,17 +11,29 @@ import { GameSetup } from '../entities/gameSetup';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  constructor(private timerService: TimerService){}
+  constructor(private timerService: TimerService, private storage: Storage, private globals:AdminGlobals){}
   gameSetup : GameSetup = new GameSetup(); 
   gameRequest : GameRequest = new GameRequest();
-  
 
+  gameName : string = "Untitled";
   submitTime():void{
     console.log("gameTime=" + this.gameSetup.gameTime);
     console.log("setupTime=" + this.gameSetup.setupTime);
     let gameRequest = this.buildGameRequest();
-    
+    this.saveGameSetup();
     this.timerService.invokeTimer(gameRequest).subscribe();
+  }
+
+  saveGameSetup():void{
+
+    this.globals.gameSetupList.forEach(item=>{
+      console.log("name" + item.gameName);
+      console.log("time" + item.gameTime);
+    });
+
+    this.globals.gameSetupList.push(this.gameSetup);
+    this.storage.set(this.gameSetup.gameName,  this.gameSetup);
+    this.clearTimerSetup();
   }
 
   buildGameRequest():GameRequest{
@@ -67,6 +81,8 @@ export class Tab2Page {
       });
     }
   }
+
+  entry(){}
 
   clearTimerSetup(){
     this.gameRequest = new GameRequest();

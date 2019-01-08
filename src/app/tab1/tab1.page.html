@@ -17,4 +17,13 @@
       </ion-card-content>
     </ion-card>
       
+
+    <ion-item *ngFor="let gameSetup of gameSetupList">
+        <div item-content>  
+        ({{gameSetup.name}}):{{gameSetup.gameTime}}
+      </div>
+        <ion-button shape="round" color="primary" fill="outline" (click)='editThis(gameSetup.name)'>Edit</ion-button>
+      
+  
+    </ion-item>
 </ion-content>

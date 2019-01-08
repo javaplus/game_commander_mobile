@@ -31,7 +31,7 @@
     <ion-label class='fixedLabel'>Count Down Before Game (10 to 5 seconds):</ion-label>
     <ion-input [(ngModel)]='gameSetup.startCountDown'  (focusout)="updateGameRequest()" required type="number" placeholder="Seconds before game time"></ion-input>
   </ion-item>
-  <ion-button shape="round" color="primary" fill="outline" (click)='submitTime()'>Start Timer</ion-button>
+  <ion-button shape="round" color="primary" fill="outline" (click)='saveGameSetup()'>Save Timer</ion-button>
   <ion-button shape="round" color="primary" fill="outline" (click)='clearTimerSetup()'>Clear Values</ion-button>
   <ion-item-divider></ion-item-divider>
   <app-speakentry (speakEntryEvent)="receiveSpeakEntry($event)"></app-speakentry>

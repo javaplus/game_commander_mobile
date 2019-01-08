@@ -17,13 +17,14 @@
       </ion-card-content>
       <ion-item>
         Stuff: {{globals.server_address}}
+        <ion-button shape="round" color="primary" fill="outline" (click)='refresh()'>Refresh</ion-button>
       </ion-item>
       <ion-item *ngFor="let gameSetup of globals.gameSetupList">
           
             <div item-content>  
             ({{gameSetup.gameName}}):{{gameSetup.gameTime}}
           </div>
-            <ion-button shape="round" color="primary" fill="outline" (click)='editThis(gameSetup.name)'>Edit</ion-button>
+            <ion-button shape="round" color="primary" fill="outline" (click)='startTimer(gameSetup.gameName)'>Start</ion-button>
         </ion-item>  
     </ion-card>
       

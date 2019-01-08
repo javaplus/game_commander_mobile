@@ -24,6 +24,14 @@ export class TimerService {
           );
     }
 
+    invokeTimerForGameSetup(gameSetup : GameSetup):Observable<String>{
+        console.log('about to invoke timer for GameSetup:', gameSetup);
+        let timerRequest = this.setupGame(gameSetup);
+        return this.httpClient.post<String>(this.global_admin.server_address, timerRequest).pipe(
+            catchError(this.handleError<String>('invokeTimer'))
+          );
+    }
+
     private handleError<T> (operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
        

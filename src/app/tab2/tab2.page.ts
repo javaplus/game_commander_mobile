@@ -20,13 +20,20 @@ export class Tab2Page {
     console.log("gameTime=" + this.gameSetup.gameTime);
     console.log("setupTime=" + this.gameSetup.setupTime);
     let gameRequest = this.buildGameRequest();
-    this.saveGameSetup("");
+    this.saveGameSetup();
     this.timerService.invokeTimer(gameRequest).subscribe();
   }
 
-  saveGameSetup(gameName : string):void{
+  saveGameSetup():void{
+
+    this.globals.gameSetupList.forEach(item=>{
+      console.log("name" + item.gameName);
+      console.log("time" + item.gameTime);
+    });
+
     this.globals.gameSetupList.push(this.gameSetup);
-    this.storage.set(this.gameSetup.gameName,  this.gameRequest);
+    this.storage.set(this.gameSetup.gameName,  this.gameSetup);
+    this.clearTimerSetup();
   }
 
   buildGameRequest():GameRequest{

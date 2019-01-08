@@ -11,24 +11,37 @@ import { Storage } from '@ionic/storage';
 export class TabsPage implements OnInit {
   ngOnInit() {
     console.log("OnInit called in Tabspage");
-    this.global_admin.gameSetupList = [];
-    this.storage.forEach((value,key,iter)=>{
-      console.log("key=" + key);
-      console.log("value=", value);
-      this.global_admin.gameSetupList.push(value);
-    });
     
   }
 
   constructor(private storage: Storage, private global_admin: AdminGlobals){
-
+    this.storage.forEach((value,key,iter)=>{
+      console.log("key=" + key);
+      console.log("value=", value);
+      this.global_admin.gameSetupList.push(value);
+      
+    });
+    this.global_admin.gameSetupList.forEach(item=>{
+      console.log("name" + item.gameName);
+      console.log("time" + item.gameTime);
+    });
   }
-  gameSetupList : GameSetup[] = [];
-
+  
   tabChanged(tabs){
     console.log("Tab changed", tabs);
     console.log("tab:", tabs.tabBar.selectedTab);
-    
+  /*  this.storage.forEach((value,key,iter)=>{
+      console.log("key=" + key);
+      console.log("value=", value);
+      let gameSetup = new GameSetup();
+      gameSetup.gameName = value.gameName;
+      gameSetup.gameName = value.gameTime;
+      gameSetup.endMessage = value.endMessage;
+      gameSetup.setupTime = value.setupTime;
+
+      this.global_admin.gameSetupList.push(gameSetup);
+    });
+    */
   }
   
 

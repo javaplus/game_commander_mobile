@@ -3,6 +3,7 @@ import { GameRequest } from '../entities/gameRequest';
 import { TimerService } from '../timerRequest/timer.service';
 import { GameSetup } from '../entities/gameSetup';
 import { Storage } from '@ionic/storage'
+import { AdminGlobals } from '../admin/admin-globals';
 
 @Component({
   selector: 'app-tab2',
@@ -10,7 +11,7 @@ import { Storage } from '@ionic/storage'
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  constructor(private timerService: TimerService, private storage: Storage){}
+  constructor(private timerService: TimerService, private storage: Storage, private globals:AdminGlobals){}
   gameSetup : GameSetup = new GameSetup(); 
   gameRequest : GameRequest = new GameRequest();
 
@@ -19,12 +20,13 @@ export class Tab2Page {
     console.log("gameTime=" + this.gameSetup.gameTime);
     console.log("setupTime=" + this.gameSetup.setupTime);
     let gameRequest = this.buildGameRequest();
-    
+    this.saveGameSetup("");
     this.timerService.invokeTimer(gameRequest).subscribe();
   }
 
   saveGameSetup(gameName : string):void{
-    this.storage.set(gameName, this.gameRequest);
+    this.globals.gameSetupList.push(this.gameSetup);
+    this.storage.set(this.gameSetup.gameName,  this.gameRequest);
   }
 
   buildGameRequest():GameRequest{

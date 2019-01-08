@@ -15,15 +15,20 @@
       <ion-card-content>
         <p>This tab will eventually have saved games.</p>
       </ion-card-content>
+      <ion-item>
+        Stuff: {{globals.server_address}}
+      </ion-item>
+      <ion-item *ngFor="let gameSetup of globals.gameSetupList">
+          
+            <div item-content>  
+            ({{gameSetup.gameName}}):{{gameSetup.gameTime}}
+          </div>
+            <ion-button shape="round" color="primary" fill="outline" (click)='editThis(gameSetup.name)'>Edit</ion-button>
+        </ion-item>  
     </ion-card>
       
 
-    <ion-item *ngFor="let gameSetup of gameSetupList">
-        <div item-content>  
-        ({{gameSetup.name}}):{{gameSetup.gameTime}}
-      </div>
-        <ion-button shape="round" color="primary" fill="outline" (click)='editThis(gameSetup.name)'>Edit</ion-button>
-      
+    
   
-    </ion-item>
+    
 </ion-content>

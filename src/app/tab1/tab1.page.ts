@@ -13,7 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class Tab1Page {
   constructor(private globals: AdminGlobals, private timerService:TimerService, private storage : Storage, private route: ActivatedRoute,
     private router: Router){
-    this.refresh();
+   
   }
   message : string = "Tab1 Game Commander!!!";
 
@@ -33,11 +33,10 @@ export class Tab1Page {
 
   }
 
-  refresh(){
-    /*this.storage.forEach((value, key, iter)=>{
-      console.log("key=" + key);
-      console.log("value.gameName=" + value.gameName);
-      this.gameSetupList.push(value);
-    });*/
+  deleteTimer(gameName:string){
+    this.storage.remove(gameName);
+
+    this.globals.gameSetupList = this.globals.gameSetupList.filter(item => item.gameName != gameName);
+    
   }
 }

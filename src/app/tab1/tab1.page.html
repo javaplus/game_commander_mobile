@@ -21,10 +21,11 @@
       <ion-item *ngFor="let gameSetup of globals.gameSetupList">
           
             <div item-content>  
-            ({{gameSetup.gameName}}):{{gameSetup.gameTime}}
+            {{gameSetup.gameName}} : {{gameSetup.gameTime}}
           </div>
             <ion-button shape="round" color="primary" fill="outline" (click)='startTimer(gameSetup.gameName)'>Start</ion-button>
             <ion-button shape="round" color="primary" fill="outline" (click)='editTimer(gameSetup.gameName)'>Edit</ion-button>
+            <ion-button shape="round" color="primary" fill="outline" (click)='deleteTimer(gameSetup.gameName)'>Delete</ion-button>
         </ion-item>  
     </ion-card>
       

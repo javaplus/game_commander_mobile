@@ -16,6 +16,9 @@ export class Tab2Page implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       let gameName = params['gameName'];
+      if(gameName!=null){
+        this.update = true;
+      }
       console.log("in OnInit:" + gameName);
       this.globals.gameSetupList.forEach(item => {
         console.log("looping gameName=" + gameName);
@@ -32,6 +35,7 @@ export class Tab2Page implements OnInit {
     private router: Router) { }
   gameSetup: GameSetup = new GameSetup();
   gameRequest: GameRequest = new GameRequest();
+  update:boolean = false;
 
   submitTime(): void {
     console.log("gameTime=" + this.gameSetup.gameTime);
@@ -42,13 +46,10 @@ export class Tab2Page implements OnInit {
   }
 
   saveGameSetup(): void {
-
-    this.globals.gameSetupList.forEach(item => {
-      console.log("name" + item.gameName);
-      console.log("time" + item.gameTime);
-    });
-
-    this.globals.gameSetupList.push(this.gameSetup);
+    // don't add if already exists:
+    if(!this.update){
+      this.globals.gameSetupList.push(this.gameSetup);
+    }
     this.storage.set(this.gameSetup.gameName, this.gameSetup);
     this.clearTimerSetup();
   }

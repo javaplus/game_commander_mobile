@@ -9,15 +9,14 @@
 <ion-content>
     <ion-card class="welcome-card">
       <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
+        <ion-card-subtitle>Game Commander</ion-card-subtitle>
         <ion-card-title>Welcome to Game Commander</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>This tab will eventually have saved games.</p>
+        <p>Below are your saved games.</p>
       </ion-card-content>
       <ion-item>
-        Stuff: {{globals.server_address}}
-        <ion-button shape="round" color="primary" fill="outline" (click)='refresh()'>Refresh</ion-button>
+        Server IP: {{globals.server_address}}
       </ion-item>
       <ion-item *ngFor="let gameSetup of globals.gameSetupList">
           
@@ -25,6 +24,7 @@
             ({{gameSetup.gameName}}):{{gameSetup.gameTime}}
           </div>
             <ion-button shape="round" color="primary" fill="outline" (click)='startTimer(gameSetup.gameName)'>Start</ion-button>
+            <ion-button shape="round" color="primary" fill="outline" (click)='editTimer(gameSetup.gameName)'>Edit</ion-button>
         </ion-item>  
     </ion-card>
       

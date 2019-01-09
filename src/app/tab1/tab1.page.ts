@@ -3,6 +3,7 @@ import { AdminGlobals } from '../admin/admin-globals';
 import { TimerService } from '../timerRequest/timer.service';
 import { GameSetup } from '../entities/gameSetup';
 import { Storage } from '@ionic/storage';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -10,13 +11,16 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  constructor(private globals: AdminGlobals, private timerService:TimerService, private storage : Storage){
+  constructor(private globals: AdminGlobals, private timerService:TimerService, private storage : Storage, private route: ActivatedRoute,
+    private router: Router){
     this.refresh();
   }
   message : string = "Tab1 Game Commander!!!";
 
   gameSetupList : GameSetup[] = [];
-  editThis(something:string){}
+  editTimer(gameName:string){
+    this.router.navigate(['/tabs/tab2', gameName]);
+  }
 
   startTimer(gameName: string){
     let gameSetup = null;

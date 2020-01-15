@@ -19,7 +19,7 @@ export class Tab1Page {
 
   gameSetupList : GameSetup[] = [];
   editTimer(gameName:string){
-    this.router.navigate(['/tabs/tab2', gameName]);
+    this.router.navigate(['/tabs/setupTab', gameName]);
   }
 
   startTimer(gameName: string){

@@ -18,21 +18,21 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab2',
+        path: 'setupTab',
         children: [
           {
             path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            loadChildren: '../setupTab/setupTab.module#SetupTabPageModule'
           }
          
         ]
       },
       {
-        path: 'tab2/:gameName',
+        path: 'setupTab/:gameName',
         children: [
           {
             path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            loadChildren: '../setupTab/setupTab.module#SetupTabPageModule'
           }
          
         ]

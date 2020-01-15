@@ -7,11 +7,11 @@ import { AdminGlobals } from '../admin/admin-globals';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-setupTab',
+  templateUrl: 'setupTab.page.html',
+  styleUrls: ['setupTab.page.scss']
 })
-export class Tab2Page implements OnInit {
+export class SetupTabPage implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {

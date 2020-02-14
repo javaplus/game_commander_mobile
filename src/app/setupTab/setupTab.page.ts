@@ -26,6 +26,8 @@ export class SetupTabPage implements OnInit {
         
         if (gameName == item.gameName) {
           this.gameSetup = item;
+          console.log(this.gameSetup);
+          this.updateGameRequest();
         }
       });
     });

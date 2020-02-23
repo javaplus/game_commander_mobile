@@ -40,8 +40,9 @@
     Total Game time:{{gameRequest.minutes}}
   </ion-item>
   <ion-item *ngFor="let speakItem of gameRequest.speaktime">
-      <div item-content>  
+    <div item-content>  
       ({{speakItem.time}}):{{speakItem.say}}
+      <ion-button shape="round" color="primary" fill="outline" (click)='updateSpeakTime()'>Update</ion-button>
     </div>
 
   </ion-item>

@@ -71,6 +71,10 @@ export class SetupTabPage implements OnInit {
 
   }
 
+  updateSpeakTime(time:string, gameName:string){
+    console.log("game");
+  }
+
   updateGameRequest() {
     this.gameRequest = this.timerService.setupGame(this.gameSetup);
     if (this.gameRequest.speaktime != null) {

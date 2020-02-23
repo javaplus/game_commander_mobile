@@ -64,6 +64,8 @@ export class SetupTabPage implements OnInit {
 
   receiveSpeakEntry($event) {
     console.log("got message", $event);
+    // remove if that time already exists
+    this.gameSetup.speakTimeList = this.gameSetup.speakTimeList.filter(speakTime=> speakTime.time!=$event.time);
     this.gameSetup.speakTimeList.push($event);
     this.updateGameRequest();
 

@@ -77,6 +77,7 @@ export class TimerService {
             speakItem.say = message;
             speakItem.time = String(minutesRemaining);
             speakItem.parms = '-s 120'
+            speakItem.isInterval=true;
             speakItems.push(speakItem);
             minutesRemaining= minutesRemaining - intervalTime;
         }   
@@ -110,6 +111,31 @@ export class TimerService {
         speakItem.parms = '-s 110';
 
         return speakItem;
+      }
+
+      getSpeakTimeForGameNameAndTime(gameName:string, time:string):SpeakTime{
+        
+        let speaktime:SpeakTime = null;
+        let gameSetup:GameSetup = null;
+        this.global_admin.gameSetupList.forEach(item => {
+          console.log("looping gameName=" + gameName);
+          console.log("looping item name=" + item.gameName);
+          
+          if (gameName == item.gameName) {
+            gameSetup = item;
+            console.log(gameSetup);
+          }
+          if(gameSetup){
+            // find speakItem that has this time:
+            gameSetup.speakTimeList.forEach(currentSpeakTime => {
+              if(currentSpeakTime.time == time){
+                speaktime = currentSpeakTime;
+              }
+            });
+          }
+        });
+
+        return speaktime;
       }
 
 

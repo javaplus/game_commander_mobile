@@ -54,6 +54,7 @@ export class SetupTabPage implements OnInit {
     }
     this.storage.set(this.gameSetup.gameName, this.gameSetup);
     this.clearTimerSetup();
+    this.router.navigate(['/tabs/tab1']);
   }
 
   buildGameRequest(): GameRequest {

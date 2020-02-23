@@ -34,15 +34,17 @@
   <ion-button shape="round" color="primary" fill="outline" (click)='saveGameSetup()'>Save Timer</ion-button>
   <ion-button shape="round" color="primary" fill="outline" (click)='clearTimerSetup()'>Clear Values</ion-button>
   <ion-item-divider></ion-item-divider>
-  <app-speakentry (speakEntryEvent)="receiveSpeakEntry($event)"></app-speakentry>
+  <app-speakentry (speakEntryEvent)="receiveSpeakEntry($event)" [speakTime]="speakTime"></app-speakentry>
   <ion-item-divider></ion-item-divider>
   <ion-item>
     Total Game time:{{gameRequest.minutes}}
   </ion-item>
   <ion-item *ngFor="let speakItem of gameRequest.speaktime">
     <div item-content>  
-      ({{speakItem.time}}):{{speakItem.say}}
-      <ion-button shape="round" color="primary" fill="outline" (click)='updateSpeakTime()'>Update</ion-button>
+      <ion-item >({{speakItem.time}}):{{speakItem.say}}
+      <ion-button shape="round" color="primary" fill="outline" (click)='updateSpeakTime(speakItem.time)'>Update</ion-button> 
+    </ion-item>
+    
     </div>
 
   </ion-item>

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { SpeakTime } from '../entities/speakTime';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TimerService } from '../timerRequest/timer.service';
@@ -12,18 +12,14 @@ export class SpeakentryComponent implements OnInit {
 
   constructor(private timerService: TimerService, private route: ActivatedRoute, private router: Router){}
 
-  speakTime : SpeakTime = new SpeakTime();
+  @Input() speakTime : SpeakTime;
   @Output() speakEntryEvent = new EventEmitter<SpeakTime>();
 
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      let gameName = params['gameName'];
-      let time = params['time'];
-      if(gameName && time){
-        this.speakTime = this.timerService.getSpeakTimeForGameNameAndTime(gameName, time);
-      }
-    });
+    if(this.speakTime==null){
+      this.speakTime = new SpeakTime();
+    }
   }
 
   createSpeakEntry(){

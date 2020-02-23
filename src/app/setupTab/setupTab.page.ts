@@ -5,6 +5,7 @@ import { GameSetup } from '../entities/gameSetup';
 import { Storage } from '@ionic/storage'
 import { AdminGlobals } from '../admin/admin-globals';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { SpeakTime } from '../entities/speakTime';
 
 @Component({
   selector: 'app-setupTab',
@@ -38,6 +39,7 @@ export class SetupTabPage implements OnInit {
   gameSetup: GameSetup = new GameSetup();
   gameRequest: GameRequest = new GameRequest();
   update:boolean = false;
+  speakTime:SpeakTime = new SpeakTime();
 
   submitTime(): void {
     console.log("gameTime=" + this.gameSetup.gameTime);
@@ -64,6 +66,8 @@ export class SetupTabPage implements OnInit {
 
   receiveSpeakEntry($event) {
     console.log("got message", $event);
+    // blank out current speak time
+    this.speakTime = new SpeakTime();
     // remove if that time already exists
     this.gameSetup.speakTimeList = this.gameSetup.speakTimeList.filter(speakTime=> speakTime.time!=$event.time);
     this.gameSetup.speakTimeList.push($event);
@@ -71,8 +75,15 @@ export class SetupTabPage implements OnInit {
 
   }
 
-  updateSpeakTime(time:string, gameName:string){
-    console.log("game");
+  updateSpeakTime(time:any){
+    console.log("Updating speak time!");
+    console.log(time);
+    console.log("Speak time=" + time);
+    this.gameSetup.speakTimeList.forEach(currentSpeakTime => {
+      if(currentSpeakTime.time == time){
+        this.speakTime = currentSpeakTime;
+      }
+    });
   }
 
   updateGameRequest() {
@@ -114,5 +125,6 @@ export class SetupTabPage implements OnInit {
   clearTimerSetup() {
     this.gameRequest = new GameRequest();
     this.gameSetup = new GameSetup();
+    this.speakTime = new SpeakTime();
   }
 }

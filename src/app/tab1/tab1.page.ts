@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  constructor(private globals: AdminGlobals, private timerService:TimerService, private storage : Storage, private route: ActivatedRoute,
+  constructor(public globals: AdminGlobals, private timerService:TimerService, private storage : Storage, private route: ActivatedRoute,
     private router: Router){
    
   }

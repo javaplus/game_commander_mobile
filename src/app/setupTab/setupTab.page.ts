@@ -7,6 +7,7 @@ import { AdminGlobals } from '../admin/admin-globals';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { SpeakTime } from '../entities/speakTime';
 
+
 @Component({
   selector: 'app-setupTab',
   templateUrl: 'setupTab.page.html',
@@ -57,6 +58,14 @@ export class SetupTabPage implements OnInit {
     this.storage.set(this.gameSetup.gameName, this.gameSetup);
     this.clearTimerSetup();
     this.router.navigate(['/tabs/tab1']);
+  }
+
+  addInterval(){
+    if(this.gameSetup.intervalTime > 0){
+      let newSpeakItems:SpeakTime[] = this.timerService.buildIntervalSpeakTime(this.gameSetup.intervalTime, this.gameSetup.gameTime);
+      this.gameSetup.speakTimeList = this.gameSetup.speakTimeList.concat(newSpeakItems);
+    }
+    this.gameRequest = this.timerService.setupGame(this.gameSetup);    
   }
 
   buildGameRequest(): GameRequest {
@@ -126,5 +135,6 @@ export class SetupTabPage implements OnInit {
     this.gameRequest = new GameRequest();
     this.gameSetup = new GameSetup();
     this.speakTime = new SpeakTime();
+    this.update = false;
   }
 }

@@ -7,7 +7,7 @@ import { AdminGlobals } from '../admin/admin-globals';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  constructor(private global_admin: AdminGlobals){}
+  constructor(public global_admin: AdminGlobals){}
 
   updateAdmin(){
     console.log("updated");

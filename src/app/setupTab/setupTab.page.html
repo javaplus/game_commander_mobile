@@ -21,7 +21,7 @@
   </ion-item>
   <ion-item>
     <ion-label class='fixedLabel'>Interval in Minutes:</ion-label>
-    <ion-input [(ngModel)]='gameSetup.intervalTime' (focusout)="updateGameRequest()" required type="number" placeholder="Interval time In Minutes"></ion-input>
+    <ion-input [(ngModel)]='gameSetup.intervalTime' (focusout)="addInterval()" required type="number" placeholder="Interval time In Minutes"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class='fixedLabel'>End Time Message:</ion-label>

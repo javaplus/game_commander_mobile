@@ -4,6 +4,11 @@ Mobile/Web app for controlling timer boxes
 
 ## Building APK:
 
+### Install (setup)
+
+Need Gradle, Java, the Android SDK and all of them setup on the PATH. 
+Obviously need Cordova installed and cordova plugins via npm or ionic cordova commands
+
 
 For prod release (but this will fail if not signed)
 ```
